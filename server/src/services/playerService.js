@@ -8,7 +8,7 @@ export function createPlayer(name) {
   try {
     db.prepare(
       `
-            INSERT INTO players (id, name, wins, loses, ties, total_games, created_at)
+            INSERT INTO players (id, name, wins, losses, ties, total_games, created_at)
             VALUES (?, ?, 0, 0, 0, 0, ?)
             `,
     ).run(playerId, name, createdAt);
@@ -37,7 +37,7 @@ export function getPlayer(playerId) {
   const player = db
     .prepare(
       `
-    SELECT id, name, wins, losses, ties, total_game, created_at
+    SELECT id, name, wins, losses, ties, total_games, created_at
     FROM players
     WHERE id = ?
     `
